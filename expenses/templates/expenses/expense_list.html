@@ -1,0 +1,24 @@
+<!-- templates/expense_list.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expense List</title>
+  </head>
+  <body>
+    <h1>Expense List</h1>
+    <ul>
+      {% for expense in expenses %}
+      <li>
+        Date: {{ expense.date }} - Category: {{ expense.category }} - Amount:
+        ${{ expense.amount }}
+        <a href="{% url 'edit-expense' expense.id %}">Edit</a>
+        <a href="{% url 'delete-expense' expense.id %}">Delete</a>
+      </li>
+      {% endfor %}
+    </ul>
+    <a href="{% url 'add-expense' %}">Add New Expense</a>
+    <a href="{% url 'analytics' %}">View Analytics</a>
+  </body>
+</html>

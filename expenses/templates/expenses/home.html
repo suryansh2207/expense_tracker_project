@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Add Expense</title>
+  </head>
+  <body>
+    <h1>Add Expense</h1>
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %} {{ form.as_p }}
+      <button type="submit">Save Expense</button>
+    </form>
+    <br />
+    {% if user.is_authenticated %}
+    <a href="{% url 'expense-list' %}">View Expenses</a> |
+    <a href="{% url 'analytics' %}">View Analytics</a> |
+    <a href="{% url 'logout' %}">Logout</a>
+    {% else %}
+    <a href="{% url 'login' %}">Login</a> |
+    <a href="{% url 'signup' %}">Sign Up</a>
+    {% endif %}
+  </body>
+</html>
